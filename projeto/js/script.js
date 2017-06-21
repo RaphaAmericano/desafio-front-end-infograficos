@@ -44,12 +44,12 @@ function init(){
 			
 			for(i = 0; i < JSON_atual[0]['Editorias'].length; i++){
 				for(j = 0; j < JSON_atual[0]['Editorias'][i]['Notícias'].length; j++){
-					htmlNoticias += '<div>';
+					htmlNoticias += '<div class="thumbnail">';
 					htmlNoticias += "<h4>"+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Título"]+"</h4>";					
 					htmlNoticias += "<h5><b>"+JSON_atual[0]['Editorias'][i]['Editoria']+"</b></h5>";					
-					htmlNoticias += '<img src="../Arquivos/Imagens/Notícias/'+JSON_atual[0]['Editorias'][i]['Notícias'][j]['Foto']+'">';					
-					htmlNoticias += "<span>"+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+"</span>";					
-					htmlNoticias += "<p>"+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Texto"]+"</p>";					
+					htmlNoticias += '<img class="thumb_img" src="../Arquivos/Imagens/Notícias/'+JSON_atual[0]['Editorias'][i]['Notícias'][j]['Foto']+'">';					
+					htmlNoticias += '<span class="data_publicacao">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+'</span>';					
+					htmlNoticias += '<p class="thumb_paragrafo">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Texto"]+'</p>';					
 					htmlNoticias += '</div>';
 					numeroMaterias++;
 				
@@ -92,19 +92,21 @@ function carregarJSONslides(callback){
 
 function initSlides(){
 	var htmlSlides = '';
+
 	var htmlQuadrados = '<ul class="lista_quadrados">';
+	var htmlSetas = '<div class="setas"><span class="seta_esquerda"><</span><span class="seta_direita">></span>';
 	var listargem = false;
 	carregarJSONslides( function(response){
 		var JSON_atual = JSON.parse(response);
 		//alert("Numero de Slides"+JSON_atual[0].imagens.length);
 		for(i = 0; i < JSON_atual[0].imagens.length; i++){
 			if(i == 0 ){
-				htmlSlides += '<img class="slide_img active" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';				
+				htmlSlides += '<img id="slide_'+(i + 1)+'" class="slide_img active" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';				
 			}else {
-				htmlSlides += '<img class="slide_img" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';
+				htmlSlides += '<img id="slide_'+(i + 1)+'" class="slide_img" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';
 			}
 
-			htmlQuadrados += '<li><a href="#"></a></li>';
+			htmlQuadrados += '<li class="quadrados"><a href="#slide_'+(i + 1)+'">_</a></li>';
 			//alert(htmlSlides);
 			if( i == 1){
 				listagem = true;
@@ -115,7 +117,8 @@ function initSlides(){
 
 		if(listagem == true){
 			htmlQuadrados += '</ul>';		
-			divSlides.insertAdjacentHTML("beforeend", htmlQuadrados);	
+			divSlides.insertAdjacentHTML("beforeend", htmlQuadrados);
+			divSlides.insertAdjacentHTML("beforeend", htmlSetas);
 		}
 	});
 	

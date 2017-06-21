@@ -6,24 +6,68 @@ body {
 	margin: 0;  
 	background-color: $branco; 
  }
- header{
- 	border-bottom: 2px solid $vermelho;
- 	font-family: $georgia; 
+ .container{
+ 	position: relative;
+ 	margin: 0 0;
+ 	top: 0; 
+ 	left: 0;   
  }
+ header{
+ 	font-family: $georgia; 
+ 	.menu_principal{
+ 		li{
+ 			display: inline-block;
+ 			.sub_menu{ 
+ 				position: relative ;
+				display: block; 
+ 			} 	
+ 		}
+ 	}
+ }
+ .esquerda {
+ 	float: left; 
+ }
+ .direita {
+ 	float: right; 
+ }
+
  #slidesDiv{
+ 	border-top: 2px solid $vermelho;
  	.slide_img{
- 		display: none;
+ 		width: 100%; 
+ 		//display: none;
  		&.active{
  			display:  inline;
  		} 
  	}
  	.lista_quadrados {
  		list-style-type: none; 
- 	 	li{
- 	 		width: 20px;
- 			height: 20px;
+ 	 	li{ 
+ 	 		display: inline-block;
+			width: 20px;
+			height: 20px;		
  			border: 2px solid $vermelho;
+ 			 
+ 			a{
+	 	 		width: 20px;
+ 				height: 20px;		 
+ 				color: $branco;	
+ 			}
  		}   	
+ 	}
+ 	.setas {
+ 		span{
+ 			cursor: pointer; 
+ 			color: $branco; 
+ 			background: $vermelho;
+ 			font-size: 80px;  
+ 		}
+ 		.seta_esquerda{
+ 			margin: 0 15px 0 0;
+ 		}
+ 		.seta_direita{
+ 			margin: 0 0 0 15px; 
+ 		}
  	}
  }
 .contato {

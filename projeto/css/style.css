@@ -4,20 +4,52 @@ body {
   margin: 0;
   background-color: #FFF; }
 
-header {
-  border-bottom: 2px solid #b22d30;
-  font-family: Georgia, serif; }
+.container {
+  position: relative;
+  margin: 0 0;
+  top: 0;
+  left: 0; }
 
-#slidesDiv .slide_img {
-  display: none; }
-  #slidesDiv .slide_img.active {
-    display: inline; }
-#slidesDiv .lista_quadrados {
-  list-style-type: none; }
-  #slidesDiv .lista_quadrados li {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #b22d30; }
+header {
+  font-family: Georgia, serif; }
+  header .menu_principal li {
+    display: inline-block; }
+    header .menu_principal li .sub_menu {
+      position: relative;
+      display: block; }
+
+.esquerda {
+  float: left; }
+
+.direita {
+  float: right; }
+
+#slidesDiv {
+  border-top: 2px solid #b22d30; }
+  #slidesDiv .slide_img {
+    width: 100%; }
+    #slidesDiv .slide_img.active {
+      display: inline; }
+  #slidesDiv .lista_quadrados {
+    list-style-type: none; }
+    #slidesDiv .lista_quadrados li {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #b22d30; }
+      #slidesDiv .lista_quadrados li a {
+        width: 20px;
+        height: 20px;
+        color: #FFF; }
+  #slidesDiv .setas span {
+    cursor: pointer;
+    color: #FFF;
+    background: #b22d30;
+    font-size: 80px; }
+  #slidesDiv .setas .seta_esquerda {
+    margin: 0 15px 0 0; }
+  #slidesDiv .setas .seta_direita {
+    margin: 0 0 0 15px; }
 
 .contato form {
   background-color: #b22d31; }
