@@ -58,7 +58,7 @@ function init(){
 		
 		divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
 
-		alert("Numero de matérias é: "+numeroMaterias);
+		//alert("Numero de matérias é: "+numeroMaterias);
 		//alert(JSON_atual[0]['Editorias'].length);
 		// Carrega Combo box Editorias
 		for( i = 0; i < JSON_atual[0]['Editorias'].length; i++){
@@ -92,16 +92,31 @@ function carregarJSONslides(callback){
 
 function initSlides(){
 	var htmlSlides = '';
-
+	var htmlQuadrados = '<ul class="lista_quadrados">';
+	var listargem = false;
 	carregarJSONslides( function(response){
 		var JSON_atual = JSON.parse(response);
-		alert("Numero de Slides"+JSON_atual[0].imagens.length);
-		for(i=0; i< JSON_atual[0].imagens.length; i++){
+		//alert("Numero de Slides"+JSON_atual[0].imagens.length);
+		for(i = 0; i < JSON_atual[0].imagens.length; i++){
+			if(i == 0 ){
+				htmlSlides += '<img class="slide_img active" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';				
+			}else {
+				htmlSlides += '<img class="slide_img" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';
+			}
 
-			htmlSlides += '<img src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';
-			//alert(htmlSlides);			
+			htmlQuadrados += '<li><a href="#"></a></li>';
+			//alert(htmlSlides);
+			if( i == 1){
+				listagem = true;
+			}			
 		}
+		
 		divSlides.insertAdjacentHTML("beforeend", htmlSlides);
+
+		if(listagem == true){
+			htmlQuadrados += '</ul>';		
+			divSlides.insertAdjacentHTML("beforeend", htmlQuadrados);	
+		}
 	});
 	
 }

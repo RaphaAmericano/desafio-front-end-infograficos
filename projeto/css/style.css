@@ -8,6 +8,17 @@ header {
   border-bottom: 2px solid #b22d30;
   font-family: Georgia, serif; }
 
+#slidesDiv .slide_img {
+  display: none; }
+  #slidesDiv .slide_img.active {
+    display: inline; }
+#slidesDiv .lista_quadrados {
+  list-style-type: none; }
+  #slidesDiv .lista_quadrados li {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #b22d30; }
+
 .contato form {
   background-color: #b22d31; }
 

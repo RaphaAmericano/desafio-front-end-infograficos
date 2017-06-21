@@ -10,6 +10,22 @@ body {
  	border-bottom: 2px solid $vermelho;
  	font-family: $georgia; 
  }
+ #slidesDiv{
+ 	.slide_img{
+ 		display: none;
+ 		&.active{
+ 			display:  inline;
+ 		} 
+ 	}
+ 	.lista_quadrados {
+ 		list-style-type: none; 
+ 	 	li{
+ 	 		width: 20px;
+ 			height: 20px;
+ 			border: 2px solid $vermelho;
+ 		}   	
+ 	}
+ }
 .contato {
 	form{
 		background-color: $vermelho_contato;
