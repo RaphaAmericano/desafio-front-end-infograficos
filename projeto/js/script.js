@@ -6,6 +6,7 @@ var divEditoriais = document.getElementById("editoriais");
 var selectBoxOrdenar = document.getElementById("ordenarData");
 var selectBoxEditoria = document.getElementById("filtrarEditoria");
 var baseDeDados = [];
+var basePorData = [];
 
 // Links Corretos
 
@@ -30,6 +31,7 @@ function init(){
 		var JSON_atual = JSON.parse(response);
 
 		baseDeDados = JSON_atual;
+		basePorData = JSON_atual;
 
 		var htmlNoticias = '';
 		var htmlComboBoxOrdenar = '';
@@ -42,15 +44,16 @@ function init(){
 			for(i = 0; i < JSON_atual[0]['Editorias'].length; i++){
 				for(j = 0; j < JSON_atual[0]['Editorias'][i]['Notícias'].length; j++){
 					htmlNoticias += '<div class="thumbnail">';
-					htmlNoticias += "<h4>"+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Título"]+"</h4>";					
-					htmlNoticias += "<h5><b>"+JSON_atual[0]['Editorias'][i]['Editoria']+"</b></h5>";					
-					htmlNoticias += '<img class="thumb_img" src="../Arquivos/Imagens/Notícias/'+JSON_atual[0]['Editorias'][i]['Notícias'][j]['Foto']+'">';					
-					htmlNoticias += '<span class="data_publicacao">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+'</span>';					
+					htmlNoticias += '<span class="data_publicacao">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+'</span>';
+					htmlNoticias += "<h5><b>"+JSON_atual[0]['Editorias'][i]['Editoria']+"</b></h5>";
+					htmlNoticias += '<img class="thumb_img" src="../Arquivos/Imagens/Notícias/'+JSON_atual[0]['Editorias'][i]['Notícias'][j]['Foto']+'">';
+					htmlNoticias += "<h4>"+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Título"]+"</h4>";
 					htmlNoticias += '<p class="thumb_paragrafo">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Texto"]+'</p>';					
 					htmlNoticias += '</div>';
 					numeroMaterias++;
-				
+					if(numeroMaterias == 6){ break;};
 				}
+				if(numeroMaterias == 6){ break;};
 			}
 		
 		divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
@@ -136,8 +139,6 @@ function ordenarMaterias(tipo){
 
 
 	var htmlNoticias = '';
-	var htmlComboBoxOrdenar = '';
-	var htmlComboBoxFiltrar = '';
 	var numeroMaterias = 0;
 	var editNum = tipo;
 
@@ -152,10 +153,67 @@ function ordenarMaterias(tipo){
 		htmlNoticias += '<p class="thumb_paragrafo">'+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Texto"]+'</p>';					
 		htmlNoticias += '</div>';
 		numeroMaterias++;
+		if(numeroMaterias == 6){ break;};
 	}
 	divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
 
 };
 selectBoxEditoria.addEventListener("change", function(){
 	ordenarMaterias(this.options[this.selectedIndex].value);
+});
+
+
+
+
+//------ Teste
+
+function ordenarPorData(){
+
+
+	var htmlNoticias = '';
+	var basePorData = baseDeDados;
+	
+	var datas = new Array();
+	var dataNova;
+	// var include = [["sim", "Talvez"], ["não", "ok"]];
+	// datas.push(include);
+	// alert(datas[0][1][0]);
+
+	divEditoriais.innerHTML = htmlNoticias;
+
+	for(i = 0; i < basePorData[0]['Editorias'].length; i++){
+		for(j = 0; j < basePorData[0]['Editorias'][i]['Notícias'].length; j++){
+
+			dataNova = basePorData[0]['Editorias'][i]['Notícias'][j]["Data de publicação"];
+			dataNova = dataNova.split('-');
+			
+			d = new Date(dataNova[2],dataNova[1], dataNova[0] );
+
+			basePorData[0]['Editorias'][i]['Notícias'][j]["Data de publicação"] = d;
+
+			// usar os metodos .sort() e .reverse()
+			// baseDeDados.sort(function(a, b){
+			// 		return a.baseDeDados[0]['Editorias'][i]['Notícias'][j]["Data de publicação"].getTime() -  b.baseDeDados[0]['Editorias'][i]['Notícias'][j]["Data de publicação"].getTime();
+			// });
+
+			// basePorData.sort(function(a, b){
+			// 	alert(ab);
+			// 	return b -a 
+			// });
+
+
+			htmlNoticias += '<div class="thumbnail">';
+			htmlNoticias += '<span class="data_publicacao">'+basePorData[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+'</span>';
+			htmlNoticias += '</div>';
+			//alert(baseDeDados[0]['Editorias'][i]['Notícias'][j]["Data de publicação"].getTime());
+
+		}
+	}
+
+	divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
+
+};
+selectBoxOrdenar.addEventListener("change", function(){
+	ordenarPorData();
+	
 });

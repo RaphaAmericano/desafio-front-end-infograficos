@@ -14,8 +14,11 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
     
         <!-- Script -->
+        <script type="text/javascript" src="js/maps.js"></script> 
 
-        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFfN9mvAl3zrx1elI6yq4o-UgootiG4-I&callback=initMap"
+    async defer></script>
+
     </head>
     <body>
         <div class="container">
@@ -39,19 +42,19 @@
         			<li><a href="#">Assine</a></li>
         		</ul>
         	</header>
-        	<section id="slidesDiv">
+        	<section id="slidesDiv" class="largura_total">
         		
         	</section>
-        	<section class="editoriais margem">
+        	<section class="editoriais">
         		<header>
         			<h3>Editoriais</h3>
         			<div>
         				<label for="">Ordenar por:</label>
         				<select name="ordenar" id="ordenarData">
-	        				<!-- <option value="data">Data</option>
-	        				<option value="recente"></option>
-	        				<option value="recente"></option>
-	        				<option value="recente"></option> -->
+	        				<option value="0">Data</option>
+	        				<option value="1">Recente</option>
+	        				<option value="2">Antiga</option>
+	        				<!-- <option value="recente"></option>  -->
         				</select>
 						<label for="">Filtrar por:</label>
         				<select name="filtrar" id="filtrarEditoria">
@@ -79,10 +82,22 @@
         			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum ad ipsa, odio. Cum sunt officiis eos quos suscipit ex labore ullam non veritatis, perspiciatis aliquid nobis, repudiandae inventore sit aperiam.</p>
         		</div>
         	</section>
-        	<section class="mapa"></section>
+        	<section class="mapa" id="mapaGoogle">
+                
+            </section>
         	<section class="contato">
         		<div class="infos">
-                    
+                    <h2>Entre em contato</h2>
+                        <h3>Onde nos achar</h3>
+                        <p>Rua dos Alfeneiros, número 4<br>
+                        00-91102<br>
+                        Little Whitning<br>  
+                        Londres/Inglaterra<br><br>
+                        (21) 4004 - 1234<br>
+                        (21) 4004 - 4321<br><br>
+                        contato@minutonews.com.br<br><br>
+                        Aberto de segunda a sexta das 09h as 19h
+                        </p>    
                 </div>
         		<form action="">
         			<h4>Mande uma mensagem</h4>
@@ -102,5 +117,6 @@
     </body>
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/carrossel.js"></script>
+    
     <!--  &#9650; &#9660; &#x25BC; &#x25B2; -->
 </html>

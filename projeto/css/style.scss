@@ -2,15 +2,20 @@
 
 body {
 	width: 100%;
-	position: relative; 
+	position: absolute; 
 	margin: 0;  
 	background-color: $branco; 
+	font-family: $georgia;
  }
  .container{
  	position: relative;
- 	margin: 0 0;
+ 	margin: 0 $lateral;
  	top: 0; 
- 	left: 0;   
+ 	left: 0;
+ 	> section {
+ 		width: 100%;
+ 	}
+ 	// }   
  }
  header{
  	font-family: $georgia; 
@@ -23,12 +28,6 @@ body {
  			} 	
  		}
  	}
- }
- .esquerda {
- 	float: left; 
- }
- .direita {
- 	float: right; 
  }
 
  #slidesDiv{
@@ -70,9 +69,64 @@ body {
  		}
  	}
  }
+
+ #editoriais{
+
+ 	display: -webkit-flex;
+ 	display: flex;
+ 	flex-direction: row;
+ 	flex-wrap: wrap ;
+ 	max-height: $editoriais_height;
+ 	.thumbnail{
+ 		margin: 55px 0 0 0;
+ 		width: 242px;
+ 		border-left: 4px solid $vermelho;
+ 		padding: 8px 45px 0 20px; 
+ 		p{
+ 			text-align: justify;
+ 		}
+ 		img {
+ 			width: 100%;
+ 		}
+ 	}
+ }
+.editoriais {
+	&.acessadas{
+		border-top: 2px dashed $cinza_tracejado;
+		border-bottom: 2px dashed $cinza_tracejado;
+	}
+}
+.mapa{
+	height: 400px;
+	widows: 100%;
+}
 .contato {
+	display: flex;
+	.infos{	
+		width: 50%;
+		p{
+			font-family: $verdana; 
+		}
+	}
 	form{
+		width: 50%;
 		background-color: $vermelho_contato;
+		h4 {
+			color: $branco;
+		}
+		label, input, textarea{
+			font-family: $verdana;	
+		}
+		label{
+			color: $branco;
+		}
+		input[type=button]{
+			background: $preto;
+			color: $branco;
+			border: none;
+			font-weight: bold;
+			padding: 8px 10px;
+		}
 	}
 }
 footer{
@@ -80,4 +134,5 @@ footer{
 	font-weight: 500;  
 	color: $branco; 
 	background-color: $preto;
+	padding: 7px 0;
 }

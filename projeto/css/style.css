@@ -1,14 +1,17 @@
 body {
   width: 100%;
-  position: relative;
+  position: absolute;
   margin: 0;
-  background-color: #FFF; }
+  background-color: #FFF;
+  font-family: Georgia, serif; }
 
 .container {
   position: relative;
-  margin: 0 0;
+  margin: 0 207px;
   top: 0;
   left: 0; }
+  .container > section {
+    width: 100%; }
 
 header {
   font-family: Georgia, serif; }
@@ -17,12 +20,6 @@ header {
     header .menu_principal li .sub_menu {
       position: relative;
       display: block; }
-
-.esquerda {
-  float: left; }
-
-.direita {
-  float: right; }
 
 #slidesDiv {
   border-top: 2px solid #b22d30; }
@@ -51,13 +48,57 @@ header {
   #slidesDiv .setas .seta_direita {
     margin: 0 0 0 15px; }
 
-.contato form {
-  background-color: #b22d31; }
+#editoriais {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 1008px; }
+  #editoriais .thumbnail {
+    margin: 55px 0 0 0;
+    width: 242px;
+    border-left: 4px solid #b22d30;
+    padding: 8px 45px 0 20px; }
+    #editoriais .thumbnail p {
+      text-align: justify; }
+    #editoriais .thumbnail img {
+      width: 100%; }
+
+.editoriais.acessadas {
+  border-top: 2px dashed #9b9da3;
+  border-bottom: 2px dashed #9b9da3; }
+
+.mapa {
+  height: 400px;
+  widows: 100%; }
+
+.contato {
+  display: flex; }
+  .contato .infos {
+    width: 50%; }
+    .contato .infos p {
+      font-family: Verdana, Geneva, sans-serif; }
+  .contato form {
+    width: 50%;
+    background-color: #b22d31; }
+    .contato form h4 {
+      color: #FFF; }
+    .contato form label, .contato form input, .contato form textarea {
+      font-family: Verdana, Geneva, sans-serif; }
+    .contato form label {
+      color: #FFF; }
+    .contato form input[type=button] {
+      background: #000;
+      color: #FFF;
+      border: none;
+      font-weight: bold;
+      padding: 8px 10px; }
 
 footer {
   font-family: Verdana, Geneva, sans-serif;
   font-weight: 500;
   color: #FFF;
-  background-color: #000; }
+  background-color: #000;
+  padding: 7px 0; }
 
 /*# sourceMappingURL=style.css.map */
