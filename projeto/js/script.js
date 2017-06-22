@@ -5,14 +5,7 @@ var divSlides = document.getElementById("slidesDiv");
 var divEditoriais = document.getElementById("editoriais");
 var selectBoxOrdenar = document.getElementById("ordenarData");
 var selectBoxEditoria = document.getElementById("filtrarEditoria");
-
-
-// botao.addEventListener("click", function(){
-// 	alert("Funcinando");
-
-// 	theSlider.insertAdjacentHTML('beforeend', '<h1>FUNCIOANDO</h1>');
-// });
-
+var baseDeDados = [];
 
 // Links Corretos
 
@@ -30,9 +23,13 @@ function carregarJSON(callback){
 	requisicaoNoticias.send(null);	
 }
 
+
+
 function init(){
 	carregarJSON( function(response){
 		var JSON_atual = JSON.parse(response);
+
+		baseDeDados = JSON_atual;
 
 		var htmlNoticias = '';
 		var htmlComboBoxOrdenar = '';
@@ -72,7 +69,6 @@ function init(){
 	});
 }
 init();
-
 
 // Carregar JSON do Slide
 
@@ -124,3 +120,42 @@ function initSlides(){
 	
 }
 initSlides();
+
+// var selectOrd = document.getElementById("ordenarData");
+// var selectFiltrar = document.getElementById("filtrarEditoria");;
+// selectFiltrar.addEventListener("onchange", function(){
+// 	var escolha = this.options[this.selectedIndex];
+// 	if( escolha.text != this.options[this.selectedIndex].text){
+
+// 	}
+// });
+
+// Ordenar Slide
+
+function ordenarMaterias(tipo){
+
+
+	var htmlNoticias = '';
+	var htmlComboBoxOrdenar = '';
+	var htmlComboBoxFiltrar = '';
+	var numeroMaterias = 0;
+	var editNum = tipo;
+
+	divEditoriais.innerHTML = htmlNoticias;
+
+	for(i = 0; i < baseDeDados[0]["Editorias"][editNum]["Notícias"].length; i++){
+		htmlNoticias += '<div class="thumbnail">';
+		htmlNoticias += "<h4>"+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Título"]+"</h4>";					
+		htmlNoticias += "<h5><b>"+baseDeDados[0]['Editorias'][editNum]['Editoria']+"</b></h5>";					
+		htmlNoticias += '<img class="thumb_img" src="../Arquivos/Imagens/Notícias/'+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]['Foto']+'">';					
+		htmlNoticias += '<span class="data_publicacao">'+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Data de publicação"]+'</span>';					
+		htmlNoticias += '<p class="thumb_paragrafo">'+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Texto"]+'</p>';					
+		htmlNoticias += '</div>';
+		numeroMaterias++;
+	}
+	divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
+
+};
+selectBoxEditoria.addEventListener("change", function(){
+	ordenarMaterias(this.options[this.selectedIndex].value);
+});
