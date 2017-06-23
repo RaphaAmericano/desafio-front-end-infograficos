@@ -5,11 +5,37 @@ var divSlides = document.getElementById("slidesDiv");
 var divEditoriais = document.getElementById("editoriais");
 var selectBoxOrdenar = document.getElementById("ordenarData");
 var selectBoxEditoria = document.getElementById("filtrarEditoria");
-var baseDeDados = [];
-var basePorData = [];
-
+var baseDeDados;
+var basePorData;
+var datasOrganizadas = [];
 // Links Corretos
 
+//------
+init();
+initSlides();
+organizarBancoPorData();
+
+//Select Combo Boxes
+selectBoxEditoria.addEventListener("change", function(){
+	alert("Funcionando editoria");
+	ordenarMaterias(this.options[this.selectedIndex].value);
+});
+selectBoxOrdenar.addEventListener("change", function(){
+	alert("Funcionando recente");
+	ordenarPorData();
+});
+
+
+document.onreadystatechange = function(){
+	
+
+	if(document.readyState == "complete"){
+		init();
+		initSlides();
+		organizarBancoPorData();
+		
+	}	
+}
 
 function carregarJSON(callback){
 	var requisicaoNoticias = new XMLHttpRequest();
@@ -24,14 +50,13 @@ function carregarJSON(callback){
 	requisicaoNoticias.send(null);	
 }
 
-
-
 function init(){
 	carregarJSON( function(response){
 		var JSON_atual = JSON.parse(response);
+		baseDeDados = JSON.parse(response);
+		basePorData = JSON.parse(response);
 
-		baseDeDados = JSON_atual;
-		basePorData = JSON_atual;
+		//baseDeDados = JSON_atual;
 
 		var htmlNoticias = '';
 		var htmlComboBoxOrdenar = '';
@@ -68,10 +93,9 @@ function init(){
 		selectBoxEditoria.insertAdjacentHTML("beforeend", htmlComboBoxOrdenar);
 	
 		htmlComboBoxOrdenar += '<option value='+i+'>'+JSON_atual[0][1]+'</option>';
-
 	});
 }
-init();
+
 
 // Carregar JSON do Slide
 
@@ -122,46 +146,32 @@ function initSlides(){
 	});
 	
 }
-initSlides();
 
-// var selectOrd = document.getElementById("ordenarData");
-// var selectFiltrar = document.getElementById("filtrarEditoria");;
-// selectFiltrar.addEventListener("onchange", function(){
-// 	var escolha = this.options[this.selectedIndex];
-// 	if( escolha.text != this.options[this.selectedIndex].text){
 
-// 	}
-// });
+
+//---
 
 // Ordenar Slide
 
 function ordenarMaterias(tipo){
 
-
 	var htmlNoticias = '';
-	var numeroMaterias = 0;
 	var editNum = tipo;
 
 	divEditoriais.innerHTML = htmlNoticias;
 
 	for(i = 0; i < baseDeDados[0]["Editorias"][editNum]["Notícias"].length; i++){
 		htmlNoticias += '<div class="thumbnail">';
-		htmlNoticias += "<h4>"+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Título"]+"</h4>";					
-		htmlNoticias += "<h5><b>"+baseDeDados[0]['Editorias'][editNum]['Editoria']+"</b></h5>";					
+		htmlNoticias += '<span class="data_publicacao">'+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Data de publicação"]+'</span>';			
+		htmlNoticias += "<h5><b>"+baseDeDados[0]['Editorias'][editNum]['Editoria']+"</b></h5>";	
 		htmlNoticias += '<img class="thumb_img" src="../Arquivos/Imagens/Notícias/'+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]['Foto']+'">';					
-		htmlNoticias += '<span class="data_publicacao">'+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Data de publicação"]+'</span>';					
+		htmlNoticias += "<h4>"+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Título"]+"</h4>";
 		htmlNoticias += '<p class="thumb_paragrafo">'+baseDeDados[0]['Editorias'][editNum]['Notícias'][i]["Texto"]+'</p>';					
 		htmlNoticias += '</div>';
-		numeroMaterias++;
-		if(numeroMaterias == 6){ break;};
 	}
 	divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
 
 };
-selectBoxEditoria.addEventListener("change", function(){
-	ordenarMaterias(this.options[this.selectedIndex].value);
-});
-
 
 
 
@@ -169,18 +179,46 @@ selectBoxEditoria.addEventListener("change", function(){
 
 function ordenarPorData(){
 
+	//Usar o método .reverse()
+	// if( ordem == 0){
+	// 	datasOrganizadas.reverse();
+	// } else if( ordem == 1){
+	// 	datasOrganizadas = [];
+	// 	organizarBancoPorData()
+	// }
 
 	var htmlNoticias = '';
-	var basePorData = baseDeDados;
+
 	
-	var datas = new Array();
-	var dataNova;
-	// var include = [["sim", "Talvez"], ["não", "ok"]];
-	// datas.push(include);
-	// alert(datas[0][1][0]);
 
 	divEditoriais.innerHTML = htmlNoticias;
+	for( k = 0; k < datasOrganizadas.length; k++){
+		for(i = 0; i < basePorData[0]['Editorias'].length; i++){
+			for(j = 0; j < basePorData[0]['Editorias'][i]['Notícias'].length; j++){
+				if(datasOrganizadas[k].getTime() == basePorData[0]['Editorias'][i]['Notícias'][j]["Data de publicação"].getTime() ){
+					
+					htmlNoticias += '<div class="thumbnail">';
+					htmlNoticias += '<span class="data_publicacao">'+basePorData[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+'</span>';
+					htmlNoticias += "<h5><b>"+basePorData[0]['Editorias'][i]['Editoria']+"</b></h5>";
+					htmlNoticias += '<img class="thumb_img" src="../Arquivos/Imagens/Notícias/'+basePorData[0]['Editorias'][i]['Notícias'][j]['Foto']+'">';
+					htmlNoticias += "<h4>"+basePorData[0]['Editorias'][i]['Notícias'][j]["Título"]+"</h4>";
+					htmlNoticias += '<p class="thumb_paragrafo">'+basePorData[0]['Editorias'][i]['Notícias'][j]["Texto"]+'</p>';					
+					htmlNoticias += '</div>';
 
+				}				
+			}
+		}
+	}
+
+	divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
+
+};
+
+
+// 
+function organizarBancoPorData(){
+
+	var dataNova;
 	for(i = 0; i < basePorData[0]['Editorias'].length; i++){
 		for(j = 0; j < basePorData[0]['Editorias'][i]['Notícias'].length; j++){
 
@@ -190,30 +228,24 @@ function ordenarPorData(){
 			d = new Date(dataNova[2],dataNova[1], dataNova[0] );
 
 			basePorData[0]['Editorias'][i]['Notícias'][j]["Data de publicação"] = d;
-
-			// usar os metodos .sort() e .reverse()
-			// baseDeDados.sort(function(a, b){
-			// 		return a.baseDeDados[0]['Editorias'][i]['Notícias'][j]["Data de publicação"].getTime() -  b.baseDeDados[0]['Editorias'][i]['Notícias'][j]["Data de publicação"].getTime();
-			// });
-
-			// basePorData.sort(function(a, b){
-			// 	alert(ab);
-			// 	return b -a 
-			// });
-
-
-			htmlNoticias += '<div class="thumbnail">';
-			htmlNoticias += '<span class="data_publicacao">'+basePorData[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+'</span>';
-			htmlNoticias += '</div>';
-			//alert(baseDeDados[0]['Editorias'][i]['Notícias'][j]["Data de publicação"].getTime());
-
 		}
 	}
+	ordenar();
+}
 
-	divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
+function ordenar( ){
+	// Método últil para os Date() : .getTime()
 
-};
-selectBoxOrdenar.addEventListener("change", function(){
-	ordenarPorData();
-	
-});
+	for(i = 0; i < basePorData[0]['Editorias'].length; i++){
+		for(j = 0; j < basePorData[0]['Editorias'][i]['Notícias'].length; j++){
+			datasOrganizadas.push( basePorData[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]);
+			
+		}
+	}
+	datasOrganizadas.sort(function(a, b){
+		return a - b; 
+	});
+}
+
+
+
