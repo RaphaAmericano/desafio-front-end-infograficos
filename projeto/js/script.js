@@ -10,10 +10,12 @@ var basePorData;
 var datasOrganizadas = [];
 // Links Corretos
 
+
+
+
+
+
 //------
-init();
-initSlides();
-organizarBancoPorData();
 
 //Select Combo Boxes
 selectBoxEditoria.addEventListener("change", function(){
@@ -30,10 +32,10 @@ document.onreadystatechange = function(){
 	
 
 	if(document.readyState == "complete"){
+		//alert("Funcionando");
 		init();
 		initSlides();
 		organizarBancoPorData();
-		
 	}	
 }
 
@@ -51,49 +53,59 @@ function carregarJSON(callback){
 }
 
 function init(){
-	carregarJSON( function(response){
-		var JSON_atual = JSON.parse(response);
-		baseDeDados = JSON.parse(response);
-		basePorData = JSON.parse(response);
+		// if(banco == true){
+		// 	carregarJSON( function(response){
+		// 		banco = JSON.parse(response);
+		// 		return;	
+		// 	});	
+		// }else{
+			carregarJSON( function(response){
 
-		//baseDeDados = JSON_atual;
-
-		var htmlNoticias = '';
-		var htmlComboBoxOrdenar = '';
-		var htmlComboBoxFiltrar = '';
-		var numeroMaterias = 0;
-		
-		// Carrega as Notícias
-	
 			
-			for(i = 0; i < JSON_atual[0]['Editorias'].length; i++){
-				for(j = 0; j < JSON_atual[0]['Editorias'][i]['Notícias'].length; j++){
-					htmlNoticias += '<div class="thumbnail">';
-					htmlNoticias += '<span class="data_publicacao">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+'</span>';
-					htmlNoticias += "<h5><b>"+JSON_atual[0]['Editorias'][i]['Editoria']+"</b></h5>";
-					htmlNoticias += '<img class="thumb_img" src="../Arquivos/Imagens/Notícias/'+JSON_atual[0]['Editorias'][i]['Notícias'][j]['Foto']+'">';
-					htmlNoticias += "<h4>"+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Título"]+"</h4>";
-					htmlNoticias += '<p class="thumb_paragrafo">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Texto"]+'</p>';					
-					htmlNoticias += '</div>';
-					numeroMaterias++;
+				var JSON_atual = JSON.parse(response);	
+			
+			
+			// baseDeDados = JSON.parse(response);
+			// basePorData = JSON.parse(response);
+
+			//baseDeDados = JSON_atual;
+
+			var htmlNoticias = '';
+			var htmlComboBoxOrdenar = '';
+			var htmlComboBoxFiltrar = '';
+			var numeroMaterias = 0;
+			
+			// Carrega as Notícias
+
+				
+				for(i = 0; i < JSON_atual[0]['Editorias'].length; i++){
+					for(j = 0; j < JSON_atual[0]['Editorias'][i]['Notícias'].length; j++){
+						htmlNoticias += '<div class="thumbnail">';
+						htmlNoticias += '<span class="data_publicacao">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Data de publicação"]+'</span>';
+						htmlNoticias += "<h5><b>"+JSON_atual[0]['Editorias'][i]['Editoria']+"</b></h5>";
+						htmlNoticias += '<img class="thumb_img" src="../Arquivos/Imagens/Notícias/'+JSON_atual[0]['Editorias'][i]['Notícias'][j]['Foto']+'">';
+						htmlNoticias += "<h4>"+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Título"]+"</h4>";
+						htmlNoticias += '<p class="thumb_paragrafo">'+JSON_atual[0]['Editorias'][i]['Notícias'][j]["Texto"]+'</p>';					
+						htmlNoticias += '</div>';
+						numeroMaterias++;
+						if(numeroMaterias == 6){ break;};
+					}
 					if(numeroMaterias == 6){ break;};
 				}
-				if(numeroMaterias == 6){ break;};
+			
+			divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
+
+			//alert("Numero de matérias é: "+numeroMaterias);
+			//alert(JSON_atual[0]['Editorias'].length);
+			// Carrega Combo box Editorias
+			for( i = 0; i < JSON_atual[0]['Editorias'].length; i++){
+				htmlComboBoxOrdenar += '<option value='+(i + 1) +'>'+JSON_atual[0]['Editorias'][i]['Editoria']+'</option>';
 			}
-		
-		divEditoriais.insertAdjacentHTML('beforeend', htmlNoticias);
 
-		//alert("Numero de matérias é: "+numeroMaterias);
-		//alert(JSON_atual[0]['Editorias'].length);
-		// Carrega Combo box Editorias
-		for( i = 0; i < JSON_atual[0]['Editorias'].length; i++){
-			htmlComboBoxOrdenar += '<option value='+i+'>'+JSON_atual[0]['Editorias'][i]['Editoria']+'</option>';
-		}
+			selectBoxEditoria.insertAdjacentHTML("beforeend", htmlComboBoxOrdenar);
 
-		selectBoxEditoria.insertAdjacentHTML("beforeend", htmlComboBoxOrdenar);
-	
-		htmlComboBoxOrdenar += '<option value='+i+'>'+JSON_atual[0][1]+'</option>';
-	});
+			htmlComboBoxOrdenar += '<option value='+(i + 1) +'>'+JSON_atual[0][1]+'</option>';
+		});	
 }
 
 
@@ -116,20 +128,24 @@ function carregarJSONslides(callback){
 function initSlides(){
 	var htmlSlides = '';
 
-	var htmlQuadrados = '<ul class="lista_quadrados">';
+	//var htmlQuadrados = '<ul class="lista_quadrados">';
+
 	var htmlSetas = '<div class="setas"><span class="seta_esquerda"><</span><span class="seta_direita">></span>';
+	var indicadores = '<div class="indicadores">';
 	var listargem = false;
 	carregarJSONslides( function(response){
 		var JSON_atual = JSON.parse(response);
 		//alert("Numero de Slides"+JSON_atual[0].imagens.length);
 		for(i = 0; i < JSON_atual[0].imagens.length; i++){
 			if(i == 0 ){
-				htmlSlides += '<img id="slide_'+(i + 1)+'" class="slide_img active" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';				
+				indicadores += '<input class="indicadores" name="indicator" data-state="active" data-slide='+i+' checked type="radio" />';
+				htmlSlides += '<img id="slide_'+(i + 1)+'" class="slide_img active" data-state="active" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';				
 			}else {
+				indicadores += '<input class="indicadores" name="indicator" data-slide='+i+' checked type="radio" />';
 				htmlSlides += '<img id="slide_'+(i + 1)+'" class="slide_img" src="../Arquivos/Imagens/Slide/'+JSON_atual[0].imagens[i]+'">';
 			}
-
-			htmlQuadrados += '<li class="quadrados"><a href="#slide_'+(i + 1)+'">_</a></li>';
+			
+			//htmlQuadrados += '<li class="quadrados"><a href="#slide_'+(i + 1)+'">_</a></li>';
 			//alert(htmlSlides);
 			if( i == 1){
 				listagem = true;
@@ -139,8 +155,10 @@ function initSlides(){
 		divSlides.insertAdjacentHTML("beforeend", htmlSlides);
 
 		if(listagem == true){
-			htmlQuadrados += '</ul>';		
-			divSlides.insertAdjacentHTML("beforeend", htmlQuadrados);
+			indicadores += "</div>";
+			// htmlQuadrados += '</ul>';		
+			// divSlides.insertAdjacentHTML("beforeend", htmlQuadrados);
+			divSlides.insertAdjacentHTML("beforeend", indicadores);
 			divSlides.insertAdjacentHTML("beforeend", htmlSetas);
 		}
 	});

@@ -11,15 +11,23 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         
         <!-- Stylesheet -->
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
     
-        <!-- Script -->
+        <!-- Biblioteca CHARTLISTJS -->
+        
+        <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
         <!-- 
+        <script type="text/javascript" src="js/objetos.js"></script>
+        
+        <script type="text/javascript" src="js/carrossel.js"></script>
+         
         <script type="text/javascript" src="js/maps.js"></script> 
+        
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFfN9mvAl3zrx1elI6yq4o-UgootiG4-I&callback=initMap"
-    async defer></script>
- -->
+    async defer></script> -->
+        
     </head>
     <body>
         <div class="container">
@@ -44,7 +52,7 @@
         		</ul>
         	</header>
         	<section id="slidesDiv" class="largura_total">
-        		
+
         	</section>
         	<section class="editoriais">
         		<header>
@@ -52,19 +60,15 @@
         			<div>
         				<label for="">Ordenar por:</label>
         				<select name="ordenar" id="ordenarData">
+                            <option value="0">Data &#9660;</option>
 	        				<option value="0">Recente</option>
 	        				<option value="1">Antiga</option>
                             <option value="2">A - Z</option>
                             <option value="3">Z - A</option>
-	        				
-	        				<!-- <option value="recente"></option>  -->
         				</select>
 						<label for="">Filtrar por:</label>
         				<select name="filtrar" id="filtrarEditoria">
-	        		<!-- 		<option value="editoria">Editoria</option>
-	        				<option value="recente"></option>
-	        				<option value="recente"></option>
-	        				<option value="recente"></option> -->
+	        				<option value="0">Editoria &#9660;</option>
         				</select>
         			</div>
         		</header>
@@ -72,10 +76,13 @@
                     
                 </div>
         	</section>
-        	<section class="editoriais acessadas margem">
+        	<section class="editoriais">
         		<h3>Editoriais mais acessadas</h3>
-        		<canvas></canvas>
-        		<div>
+                <div class="grafico">
+                    <div class="ct-chart ct-perfect-four">      
+                    </div>    
+                </div>	
+        		<div class="conteudo">
         			<h4>Título aqui</h4>
         			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -102,24 +109,25 @@
                         Aberto de segunda a sexta das 09h as 19h
                         </p>    
                 </div>
-        		<form action="">
-        			<h4>Mande uma mensagem</h4>
-        			<label for="">Seu nome:</label>
-        			<input type="text">
-        			<label for="">Email:</label>
-        			<input type="text">
-					<label for="">Mensagem:</label>
-					<textarea name="" id="" cols="30" rows="10"></textarea>
-					<input type="button" value="Enviar">
-        		</form>
+                <div class="formulario">
+                    <form action="">
+                        <label for="">Mande uma mensagem</label>
+                        <label for="">Seu nome:</label>
+                        <input type="text" autocomplete="on">
+                        <label for="" >Email:</label>
+                        <input type="text" autocomplete="on">
+                        <label for="">Mensagem:</label>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <input type="button" value="Enviar">
+                    </form>    
+                </div>
         	</section>
         	<footer>
         		<h6>&copy;  Entrevista | Front-End</h6>
         	</footer>
         </div>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/grafico.js"></script>
     </body>
-    <script type="text/javascript" src="js/script.js"></script>
-    <!-- <script type="text/javascript" src="js/carrossel.js"></script> -->
-    
-    <!--  &#9650; &#9660; &#x25BC; &#x25B2; -->
 </html>
+<!--  &#9650; &#9660; &#x25BC; &#x25B2; -->
