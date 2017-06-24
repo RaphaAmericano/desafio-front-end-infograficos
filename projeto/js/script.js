@@ -8,9 +8,15 @@ var selectBoxEditoria = document.getElementById("filtrarEditoria");
 var baseDeDados;
 var basePorData;
 var datasOrganizadas = [];
+var slides = document.querySelectorAll("img.slide_img");
 // Links Corretos
+		init();
+		initSlides();
+		organizarBancoPorData();
 
 
+
+                    
 
 
 
@@ -29,13 +35,12 @@ selectBoxOrdenar.addEventListener("change", function(){
 
 
 document.onreadystatechange = function(){
-	
-
 	if(document.readyState == "complete"){
-		//alert("Funcionando");
-		init();
-		initSlides();
-		organizarBancoPorData();
+
+                    var primeiroSlide = slides[0];
+                    var ultimoSlide = slides[slides.length -1];
+
+                    alert(slides +" " + primeiroSlide);
 	}	
 }
 

@@ -65,7 +65,7 @@ body {
 			a{
 				color: inherit;
 				text-decoration: none;
-				&:first-child{
+				&.atual{
 					color: $vermelho;
 				}
 				&:visited{
@@ -128,6 +128,11 @@ body {
 		text-indent: 0.01px;
 		text-overflow: ""; 
 		text-transform: uppercase;
+		background-image: url('../img/seta_select_box.png');
+		background-position: 95px 15px;
+		background-repeat: no-repeat;
+		min-width: 8.4em;
+
 	}
 	&.acessadas{
 		border-top: 2px dashed $cinza_tracejado;

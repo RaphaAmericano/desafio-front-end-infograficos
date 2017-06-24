@@ -97,7 +97,11 @@ header {
     padding: 0.8em 0.2em 0.8em 0.2em;
     text-indent: 0.01px;
     text-overflow: "";
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    background-image: url("../img/seta_select_box.png");
+    background-position: 95px 15px;
+    background-repeat: no-repeat;
+    min-width: 8.4em; }
   .editoriais.acessadas {
     border-top: 2px dashed #9b9da3;
     border-bottom: 2px dashed #9b9da3; }
