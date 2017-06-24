@@ -132,7 +132,9 @@ body {
 		background-position: 95px 15px;
 		background-repeat: no-repeat;
 		min-width: 8.4em;
-
+		option{
+			border: none;
+		}
 	}
 	&.acessadas{
 		border-top: 2px dashed $cinza_tracejado;
