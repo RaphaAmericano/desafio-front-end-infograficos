@@ -14,22 +14,14 @@
         <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
     
+
         <!-- Biblioteca CHARTLISTJS -->
         
         <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+        <!-- Biblioteca Google Maps API -->
+        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFfN9mvAl3zrx1elI6yq4o-UgootiG4-I&callback=initMap"
+    async defer></script> -->
         
-        <script type="text/javascript" src="js/objetos.js"></script>
-
-
-        
-        <!-- 
-         
-        <script type="text/javascript" src="js/maps.js"></script> 
-        
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFfN9mvAl3zrx1elI6yq4o-UgootiG4-I&callback=initMap"
-    async defer></script>
-         -->
     </head>
     <body>
         <div class="container">
@@ -53,8 +45,9 @@
         			<li><a href="#">Assine</a></li>
         		</ul>
         	</header>
-        	<section id="slidesDiv" class="largura_total">
-
+        	<section  class="slide_show">
+                <div id="slidesDiv"></div>
+                <div id="controladores"></div>
         	</section>
         	<section class="editoriais">
         		<header>
@@ -63,10 +56,10 @@
         				<label for="">Ordenar por:</label>
         				<select name="ordenar" id="ordenarData">
                             <option value="0">Data </option>
-	        				<option value="0">Recente</option>
-	        				<option value="1">Antiga</option>
-                            <option value="2">A - Z</option>
-                            <option value="3">Z - A</option>
+	        				<option value="1">Recente</option>
+	        				<option value="2">Antiga</option>
+                            <option value="3">A - Z</option>
+                            <option value="4">Z - A</option>
         				</select>
 						<label for="">Filtrar por:</label>
         				<select name="filtrar" id="filtrarEditoria">
@@ -128,9 +121,11 @@
         		<h6>&copy;  Entrevista | Front-End</h6>
         	</footer>
         </div>
-        <!-- <script type="text/javascript" src="js/script.js"></script> -->
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/objetos.js"></script>
         <script type="text/javascript" src="js/grafico.js"></script>
-       <!--  <script type="text/javascript" src="js/carrossel.js"></script> -->
+        <script type="text/javascript" src="js/maps.js"></script>  
+        <script type="text/javascript" src="js/carrossel.js"></script>
     </body>
 </html>
 <!--  &#9650; &#9660; &#x25BC; &#x25B2; -->

@@ -75,14 +75,15 @@ body {
  		}
  	}
  }
-
- #slidesDiv{
- 	.slide_img{
- 		width: 100%; 
- 		//display: none;
- 		&.active{
- 			display:  inline;
- 		} 
+.slide_show{
+	#slidesDiv{
+		.slide_img{
+			width: 50%; 
+			display: none;
+			&.active{
+				display:  inline;
+			} 
+		}
  	}
  	.lista_quadrados {
  		list-style-type: none; 
@@ -99,21 +100,21 @@ body {
  			}
  		}   	
  	}
- 	.setas {
- 		span{
- 			cursor: pointer; 
- 			color: $branco; 
- 			background: $vermelho;
- 			font-size: 80px;  
- 		}
- 		.seta_esquerda{
- 			margin: 0 15px 0 0;
- 		}
- 		.seta_direita{
- 			margin: 0 0 0 15px; 
- 		}
- 	}
- }
+	.setas {
+		span{
+			cursor: pointer; 
+			color: $branco; 
+			background: $vermelho;
+			font-size: 80px;  
+		}
+		.seta_esquerda{
+			margin: 0 15px 0 0;
+		}
+		.seta_direita{
+			margin: 0 0 0 15px; 
+		}
+	}
+}
 .editoriais{
 	float: left;
 	select{
