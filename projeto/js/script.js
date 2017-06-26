@@ -17,10 +17,10 @@ var bancoDeSlides;
 var bancoPorData;
 
 function app(){
-	alert("In app :D");
 	bancoDeMaterias = new Banco(linkJSONnoticias);
 	bancoDeSlides = new Banco(linkJSONslides, true);
 	bancoPorData = new Banco(linkJSONnoticias);	
+
 	bancoDeSlides.iniciarBanco();
 	bancoDeSlides.displayMaterias();
 	bancoDeMaterias.iniciarBanco();
@@ -37,24 +37,28 @@ function app(){
 		//0 = data, 1 = recente, 2 = antiga, 3 = a z, 4 = z a
 		switch(value){
 			case 4:
-			
+			bancoPorData.resetarEditoriais();
+			//função alfabetica
 			//
 			break;
 			case 3:
-			
+			bancoPorData.resetarEditoriais();
+			//funçao algabetica
 			//
 			break;
 			case 2: 
-			
-			bancoPorData.organizarPorData(true);
+			bancoPorData.resetarEditoriais();		
+			bancoPorData.reverterArrayDatas();
+			bancoPorData.organizarPorData();
 			break;
 			case 1:
-			
-			bancoPorData.organizarPorData(false);
+			bancoPorData.resetarEditoriais();
+			bancoPorData.organizarPorData();
 			break;
 			case 0:
 			default:
-			
+			bancoPorData.resetarEditoriais();
+			bancoDeSlides.displayMaterias();
 			return;
 		}
 		// bancoPorData.organizarPorData();

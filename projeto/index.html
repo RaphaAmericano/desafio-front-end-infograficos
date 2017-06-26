@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Minuto News</title>
+        
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -25,8 +26,8 @@
     </head>
     <body>
         <div class="container">
-        	<header>
-        		<img class="logo" src="img/logo-minuto-news.jpg" alt="Minuto News Logo">
+        	<header class="main_header">
+        		<a href="index.html"><img class="logo" src="img/logo-minuto-news.jpg" alt="Minuto News Logo"></a>
         		<ul class="menu_principal">
         			<li><a href="index.html">Início</a></li>
         			<li>
@@ -51,8 +52,8 @@
         	</section>
         	<section class="editoriais">
         		<header>
-        			<h3>Editoriais</h3>
-        			<div>
+        			<h2>Editoriais</h2>
+        			<div class="comboboxes">
         				<label for="">Ordenar por:</label>
         				<select name="ordenar" id="ordenarData">
                             <option value="0">Data </option>
@@ -72,13 +73,13 @@
                 </div>
         	</section>
         	<section class="editoriais">
-        		<h3>Editoriais mais acessadas</h3>
+        		<h2>Editoriais mais acessadas</h2>
                 <div class="grafico">
                     <div class="ct-chart ct-perfect-four">      
                     </div>    
                 </div>	
         		<div class="conteudo">
-        			<h4>Título aqui</h4>
+        			<h3>Título aqui</h3>
         			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
         			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -110,9 +111,9 @@
                         <label for="">Seu nome:</label>
                         <input type="text" autocomplete="on">
                         <label for="" >Email:</label>
-                        <input type="text" autocomplete="on">
+                        <input type="email" autocomplete="on">
                         <label for="">Mensagem:</label>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <textarea name="" id="" cols="30" rows="3"></textarea>
                         <input type="button" value="Enviar">
                     </form>    
                 </div>

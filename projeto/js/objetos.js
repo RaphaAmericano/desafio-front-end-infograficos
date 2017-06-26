@@ -64,12 +64,23 @@ function Banco(link, slide = false){
 					novoP.classList.add("thumb_paragrafo");
 					novoP.innerText = banco_de_dados[0]['Editorias'][i]['Notícias'][j]["Texto"];
 
+
+					//CODAR O SAIBA MAIS
+					// novoSaiba = createElement("span");//
+					// novoSaibaA = createElement("a");
+					// novoSaibaA.innerText = "Saiba Mais";
+					// novoSaibaA.href = "#id_"+i; 
+					// novoSaiba.classList("saiba_mais");
+					// novoSaiba.appendChild(novoP);//
+					// novaDiv.appendChild(novoSaiba);
+
 					novaDiv.appendChild(novoSpan);
 					novaDiv.appendChild(novoH5);
 					novaDiv.appendChild(novoH5);
 					novaDiv.appendChild(novoImg);
 					novaDiv.appendChild(novoH4);
 					novaDiv.appendChild(novoP);
+					
 
 					divEditoriais.appendChild(novaDiv);
 
@@ -90,8 +101,9 @@ function Banco(link, slide = false){
 		else if(this.slideStatus === true) {
 				var listagem = false;
 
-				novoForm = document.createElement("form");
-				novoForm.classList.add("lista_quadrados");
+				novoControladorQuadrados = document.createElement("div");
+				novoControladorQuadrados.classList.add("lista_quadrados");
+				//novoForm.name = "controles";
 				for(i = 0; i < banco_de_dados[0].imagens.length; i++){
 
 					 if( i === 1){
@@ -103,13 +115,21 @@ function Banco(link, slide = false){
 					novoSlide.src = '../Arquivos/Imagens/Slide/'+banco_de_dados[0].imagens[i];
 
 					divSlides.appendChild(novoSlide);
-					novoRadioInp = document.createElement("input");
-					novoRadioInp.type = "radio";
-					novoRadioInp.value = i;
+
+					// novoRadioInp = document.createElement("input");
+					// novoRadioInp.type = "checkbox";
+					// novoRadioInp.value = i;
+					// novoRadioInp.classList.add("input_quadrado");
+					// novoSpanInputBox = document.createElement("span");
+					// novoRadioInp.appendChild(novoSpanInputBox);
+					novoRadioInp = document.createElement("a");
+					novoRadioInp.setAttribute("rel", i);
+					novoRadioInp.classList.add("input_quadrado");
+					novoRadioInp.innerText = i;
 					if(i == 0){
-					novoRadioInp.checked = true;
+						novoRadioInp.classList.add("active");
 					 }
-					novoForm.appendChild(novoRadioInp);
+					novoControladorQuadrados.appendChild(novoRadioInp);
 					if(listagem == true){
 						
 						
@@ -133,7 +153,7 @@ function Banco(link, slide = false){
 						novaDiv.appendChild(novoSpanEsq);
 						novaDiv.appendChild(novoSpanDir);
 						
-						divControladores.appendChild(novoForm);					
+						divControladores.appendChild(novoControladorQuadrados);					
 						divControladores.appendChild(novaDiv);
 						listagem = false;			
 					}// if listagem == true
@@ -215,10 +235,13 @@ function Banco(link, slide = false){
 				return a - b; 
 		});
 	}
-	this.organizarPorData = function(reverso = false){
+	this.reverterArrayDatas = function(){
 		if(reverso === true ){
 			ArrDatas.reverse();
 		}
+	}
+	this.organizarPorData = function(){
+
 		//var htmlNoticias = '';
 		var htmlComboBoxOrdenar = '';
 		var htmlComboBoxFiltrar = '';
@@ -243,8 +266,8 @@ function Banco(link, slide = false){
 							novoImg = document.createElement("img");
 							novoImg.classList.add("thumb_img");
 							novoImg.src = "../Arquivos/Imagens/Notícias/"+banco_de_dados[0]['Editorias'][i]['Notícias'][j]['Foto'];
-							novoH4 = document.createElement("h4");
-							novoH4.innerText = banco_de_dados[0]['Editorias'][i]['Notícias'][j]["Título"];
+							novoH3 = document.createElement("h4");
+							novoH3.innerText = banco_de_dados[0]['Editorias'][i]['Notícias'][j]["Título"];
 							novoP = document.createElement("p");
 							p.classList.add("thumb_paragrafo");
 							p.innerText = banco_de_dados[0]['Editorias'][i]['Notícias'][j]["Texto"];
@@ -252,7 +275,7 @@ function Banco(link, slide = false){
 							novaDiv.appendChild(novaSpan);
 							novaDiv.appendChild(novoH5);
 							novaDiv.appendChild(novoImg);
-							novaDiv.appendChild(h4);
+							novaDiv.appendChild(h3);
 							novaDiv.appendChild(p);
 
 							divEditoriais.appendChild(novaDiv);
@@ -284,10 +307,10 @@ function Banco(link, slide = false){
 }
 function Menus(){
 	var menus = document.querySelectorAll("li > ul");
-	menus.addEventListener("mouseonhover", function(){
+	menus.addEventListener("mouseover", function(){
 		this.selectedIndex.classList.add("active");
 	});
-	menus.addEventListener("mouseover", function(){
+	menus.addEventListener("mouseout", function(){
 		this.selectedIndex.classList.remove("active");
 	});
 

@@ -2,16 +2,21 @@
 
 body {
 	width: 100%;
-	position: absolute; 
+	min-height: 100%;
+	position: relative; 
 	margin: 0;  
 	background-color: $branco; 
 	font-family: $georgia;
  }
  .container{
- 	position: relative;
- 	margin: 0 $lateral;
+ 	position: absolute;
+ 	margin: 0 0;
  	top: 0; 
  	left: 0;
+ 	 > header, > section.editoriais, > section.contato, > footer {
+ 		box-sizing: border-box;
+ 		padding: 0 $lateral;
+ 	}
  	> section {
  		position: relative;
  		float: left;
@@ -19,7 +24,7 @@ body {
  	}
  	// }   
  }
- header{
+ header.main_header{
  	font-family: $georgia;
  	border-bottom: 2px solid $vermelho;
  	width: 100%;
@@ -58,7 +63,7 @@ body {
 					display: list-item;
 					position: absolute;;
 					top: 35px;
-					right: 100px;
+					right: 300px;
 					z-index: 200;
  				}
 			}
@@ -78,11 +83,70 @@ body {
 .slide_show{
 	#slidesDiv{
 		.slide_img{
-			width: 50%; 
+			width: 100%; 
 			display: none;
 			&.active{
 				display:  inline;
 			} 
+		}
+ 	}
+ 	#controladores{
+ 		position: absolute;
+ 		width: 100%;
+ 		top: 0;
+ 		margin: 12em 0 0 0;
+		.lista_quadrados {
+			background: $branco;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			margin: 0 auto;
+			
+			a.input_quadrado{
+				border: 4px solid $preto;
+				color: $branco;
+				cursor: pointer;
+				display: inline-block;
+				background-image: url('../img/slide_checkbox_bg.jpg');
+				background-position: top right;
+				background-repeat: no-repeat;
+				background-color: $branco;
+				width: 20px;
+				height: 20px;
+				text-align: center;
+				:before{
+					padding-right: 8px;
+					content: '&#9633;';	
+				}
+				
+			}
+			a.input_quadrado.active{
+				border: 4px solid $vermelho;
+			}
+
+			input[type=checkbox].input_quadrado{
+	 		//display: none;
+				// width: 28px;
+		 	// 	height: 20px;
+		 	// 	margin: 20px;
+		 	// 	background: $vermelho;
+		 	// 	border: 4px solid $vermelho_contato;
+		 		span {
+					display: inline-block;
+					width: 20px;
+					height: 20px;
+					vertical-align: middle;
+					cursor: pointer;
+					background: url('../img/slide_checkbox_bg.jpg') left top no-repeat;
+					border: 2px solid $preto;
+		 		}
+		 		&:checked {
+		 			span {
+		 				border: 2px solid $vermelho;		
+		 				
+		 			}
+		 		}
+	 		}
 		}
  	}
  	.lista_quadrados {
@@ -108,10 +172,12 @@ body {
 			font-size: 80px;  
 		}
 		.seta_esquerda{
-			margin: 0 15px 0 0;
+			margin:0 0 0 0.2em;
+			float: left;
 		}
 		.seta_direita{
-			margin: 0 0 0 15px; 
+			margin: 0 0.2em 0 0; 
+			float: right;
 		}
 	}
 }
@@ -137,6 +203,14 @@ body {
 			border: none;
 		}
 	}
+	h2 {
+		float: left;
+		margin: 0 0;
+		width: 100%;
+	}
+	.comboboxes{
+		float: right;
+	}
 	&.acessadas{
 		border-top: 2px dashed $cinza_tracejado;
 		border-bottom: 2px dashed $cinza_tracejado;
@@ -151,10 +225,12 @@ body {
 	}
 }
  #editoriais{
+ 	float: left;
  	.thumbnail{
+ 		box-sizing: border-box;
  		float: left;
  		margin: 55px 0 0 0;
- 		width: 242px;
+ 		width: 33.1%; //242px
  		min-height: 38em;
  		border-left: 4px solid $vermelho;
  		padding: 8px 45px 0 20px; 
@@ -174,6 +250,8 @@ body {
 	.infos{
 		float: left;	
 		width: 50%;
+		box-sizing: border-box;
+		padding: 0 0 4em 5.9em;
 		p{
 			font-family: $verdana;
 			margin: 0;
@@ -181,18 +259,24 @@ body {
 	}
 	.formulario{
 		float: right;
+		box-sizing: border-box;
 		width: 50%;
 		background-color: $vermelho_contato;
+		padding: 0 5.9em 4em 0;
 		form{
 			position: relative;
 			box-sizing: border-box;
 			width: 100%;
 			padding: 0 1.2em;
+			input[type=text], input[type=email]{
+				padding: 1em 1em ;
+			}
 			label:first-child{
 				font-family: $georgia;
 				font-size: 1.2em;
 			}
 			label, input, textarea{
+				box-sizing: border-box;
 				width: 100%;
 				border: none;
 				padding: 0 0 0 0;
@@ -202,6 +286,7 @@ body {
 			}
 			textarea{
 				resize: none;
+				padding: 1em 1em ;
 			}
 			label{
 				color: $branco;
@@ -227,5 +312,10 @@ footer{
 	font-weight: 500;  
 	color: $branco; 
 	background-color: $preto;
-	padding: 7px 0;
+	width: 100%; 
+	bottom: 0;
+	left: 0;
+	h6{
+		margin: 3.4em 0 ;
+	}
 }

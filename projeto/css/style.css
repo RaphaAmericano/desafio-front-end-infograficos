@@ -1,69 +1,111 @@
 body {
   width: 100%;
-  position: absolute;
+  min-height: 100%;
+  position: relative;
   margin: 0;
   background-color: #FFF;
   font-family: Georgia, serif; }
 
 .container {
-  position: relative;
-  margin: 0 207px;
+  position: absolute;
+  margin: 0 0;
   top: 0;
   left: 0; }
+  .container > header, .container > section.editoriais, .container > section.contato, .container > footer {
+    box-sizing: border-box;
+    padding: 0 13em; }
   .container > section {
     position: relative;
     float: left;
     width: 100%; }
 
-header {
+header.main_header {
   font-family: Georgia, serif;
   border-bottom: 2px solid #b22d30;
   width: 100%;
   float: left; }
-  header .logo {
+  header.main_header .logo {
     width: 200px;
     float: left; }
-  header .menu_principal {
+  header.main_header .menu_principal {
     float: right;
     list-style-type: none;
     margin: 1em 0.4em 1em 0.4em; }
-    header .menu_principal > li {
+    header.main_header .menu_principal > li {
       display: inline-block;
       margin: 0 0.4em; }
-    header .menu_principal li {
+    header.main_header .menu_principal li {
       list-style-type: none;
       margin: 0.2em 0.4em; }
-      header .menu_principal li .sub_menu {
+      header.main_header .menu_principal li .sub_menu {
         display: none;
         padding: 0 0 0 1em;
         border-bottom: 2px solid #b22d30; }
-        header .menu_principal li .sub_menu > li {
+        header.main_header .menu_principal li .sub_menu > li {
           margin: 0.5em 4em 0.5em 1em; }
-          header .menu_principal li .sub_menu > li a:hover {
+          header.main_header .menu_principal li .sub_menu > li a:hover {
             font-weight: bold; }
-      header .menu_principal li:hover, header .menu_principal li:active, header .menu_principal li:focus {
+      header.main_header .menu_principal li:hover, header.main_header .menu_principal li:active, header.main_header .menu_principal li:focus {
         list-style-type: none; }
-        header .menu_principal li:hover > .sub_menu, header .menu_principal li:active > .sub_menu, header .menu_principal li:focus > .sub_menu {
+        header.main_header .menu_principal li:hover > .sub_menu, header.main_header .menu_principal li:active > .sub_menu, header.main_header .menu_principal li:focus > .sub_menu {
           list-style-type: none;
           background: #FFF;
           display: list-item;
           position: absolute;
           top: 35px;
-          right: 100px;
+          right: 300px;
           z-index: 200; }
-      header .menu_principal li a {
+      header.main_header .menu_principal li a {
         color: inherit;
         text-decoration: none; }
-        header .menu_principal li a.atual {
+        header.main_header .menu_principal li a.atual {
           color: #b22d30; }
-        header .menu_principal li a:visited {
+        header.main_header .menu_principal li a:visited {
           color: inherit; }
 
 .slide_show #slidesDiv .slide_img {
-  width: 50%;
+  width: 100%;
   display: none; }
   .slide_show #slidesDiv .slide_img.active {
     display: inline; }
+.slide_show #controladores {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  margin: 12em 0 0 0; }
+  .slide_show #controladores .lista_quadrados {
+    background: #FFF;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto; }
+    .slide_show #controladores .lista_quadrados a.input_quadrado {
+      border: 4px solid #000;
+      color: #FFF;
+      cursor: pointer;
+      display: inline-block;
+      background-image: url("../img/slide_checkbox_bg.jpg");
+      background-position: top right;
+      background-repeat: no-repeat;
+      background-color: #FFF;
+      width: 20px;
+      height: 20px;
+      text-align: center; }
+      .slide_show #controladores .lista_quadrados a.input_quadrado :before {
+        padding-right: 8px;
+        content: '&#9633;'; }
+    .slide_show #controladores .lista_quadrados a.input_quadrado.active {
+      border: 4px solid #b22d30; }
+    .slide_show #controladores .lista_quadrados input[type=checkbox].input_quadrado span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      cursor: pointer;
+      background: url("../img/slide_checkbox_bg.jpg") left top no-repeat;
+      border: 2px solid #000; }
+    .slide_show #controladores .lista_quadrados input[type=checkbox].input_quadrado:checked span {
+      border: 2px solid #b22d30; }
 .slide_show .lista_quadrados {
   list-style-type: none; }
   .slide_show .lista_quadrados li {
@@ -81,9 +123,11 @@ header {
   background: #b22d30;
   font-size: 80px; }
 .slide_show .setas .seta_esquerda {
-  margin: 0 15px 0 0; }
+  margin: 0 0 0 0.2em;
+  float: left; }
 .slide_show .setas .seta_direita {
-  margin: 0 0 0 15px; }
+  margin: 0 0.2em 0 0;
+  float: right; }
 
 .editoriais {
   float: left; }
@@ -105,6 +149,12 @@ header {
     min-width: 8.4em; }
     .editoriais select option {
       border: none; }
+  .editoriais h2 {
+    float: left;
+    margin: 0 0;
+    width: 100%; }
+  .editoriais .comboboxes {
+    float: right; }
   .editoriais.acessadas {
     border-top: 2px dashed #9b9da3;
     border-bottom: 2px dashed #9b9da3; }
@@ -115,17 +165,20 @@ header {
     float: right;
     width: 50%; }
 
-#editoriais .thumbnail {
-  float: left;
-  margin: 55px 0 0 0;
-  width: 242px;
-  min-height: 38em;
-  border-left: 4px solid #b22d30;
-  padding: 8px 45px 0 20px; }
-  #editoriais .thumbnail p {
-    text-align: justify; }
-  #editoriais .thumbnail img {
-    width: 100%; }
+#editoriais {
+  float: left; }
+  #editoriais .thumbnail {
+    box-sizing: border-box;
+    float: left;
+    margin: 55px 0 0 0;
+    width: 33.1%;
+    min-height: 38em;
+    border-left: 4px solid #b22d30;
+    padding: 8px 45px 0 20px; }
+    #editoriais .thumbnail p {
+      text-align: justify; }
+    #editoriais .thumbnail img {
+      width: 100%; }
 
 .mapa {
   height: 400px;
@@ -133,23 +186,30 @@ header {
 
 .contato .infos {
   float: left;
-  width: 50%; }
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 0 4em 5.9em; }
   .contato .infos p {
     font-family: Verdana, Geneva, sans-serif;
     margin: 0; }
 .contato .formulario {
   float: right;
+  box-sizing: border-box;
   width: 50%;
-  background-color: #b22d31; }
+  background-color: #b22d31;
+  padding: 0 5.9em 4em 0; }
   .contato .formulario form {
     position: relative;
     box-sizing: border-box;
     width: 100%;
     padding: 0 1.2em; }
+    .contato .formulario form input[type=text], .contato .formulario form input[type=email] {
+      padding: 1em 1em; }
     .contato .formulario form label:first-child {
       font-family: Georgia, serif;
       font-size: 1.2em; }
     .contato .formulario form label, .contato .formulario form input, .contato .formulario form textarea {
+      box-sizing: border-box;
       width: 100%;
       border: none;
       padding: 0 0 0 0;
@@ -157,7 +217,8 @@ header {
       display: block;
       font-family: Verdana, Geneva, sans-serif; }
     .contato .formulario form textarea {
-      resize: none; }
+      resize: none;
+      padding: 1em 1em; }
     .contato .formulario form label {
       color: #FFF; }
     .contato .formulario form input[type=button] {
@@ -178,6 +239,10 @@ footer {
   font-weight: 500;
   color: #FFF;
   background-color: #000;
-  padding: 7px 0; }
+  width: 100%;
+  bottom: 0;
+  left: 0; }
+  footer h6 {
+    margin: 3.4em 0; }
 
 /*# sourceMappingURL=style.css.map */
