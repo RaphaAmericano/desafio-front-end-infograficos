@@ -22,8 +22,7 @@ function Banco(link, slide = false){
 		requisicaoNoticias.open("GET", this.link_banco, false);//Aqui
 		requisicaoNoticias.onreadystatechange = function(){
 			if(requisicaoNoticias.readyState == 4 && requisicaoNoticias.status == "200"){
-				callback(requisicaoNoticias.responseText);
-				
+				callback(requisicaoNoticias.responseText);	
 			}
 		};
 		requisicaoNoticias.send(null);
@@ -41,7 +40,6 @@ function Banco(link, slide = false){
 	this.mostrarArrData = function(){
 		return ArrDatas;
 	}
-
 	//
 	this.displayMaterias = function(){
 
@@ -91,61 +89,58 @@ function Banco(link, slide = false){
 		} //if slide false
 		else if(this.slideStatus === true) {
 				var listagem = false;
+
 				novoForm = document.createElement("form");
 				novoForm.classList.add("lista_quadrados");
 				for(i = 0; i < banco_de_dados[0].imagens.length; i++){
+
+					 if( i === 1){
+					listagem = true;
+					 }
 					novoSlide = document.createElement('img');
 					novoSlide.id = i; //
 					novoSlide.classList.add("slide_img");
 					novoSlide.src = '../Arquivos/Imagens/Slide/'+banco_de_dados[0].imagens[i];
-					// if(i == 0 ){
-					// 	novoSlide.classList.add("active");
-					// 	htmlSlides += '<img id="slide_'+(i + 1)+'" class="slide_img" src="../Arquivos/Imagens/Slide/'+banco_de_dados[0].imagens[i]+'">';				
-					// }
-					//htmlQuadrados += '<li class="quadrados"><a href="#slide_'+(i + 1)+'">_</a></li>';
+
 					divSlides.appendChild(novoSlide);
 					novoRadioInp = document.createElement("input");
 					novoRadioInp.type = "radio";
 					novoRadioInp.value = i;
-					if(i=0){
-						novoRadioInp.checked = true;
-					}
+					if(i == 0){
+					novoRadioInp.checked = true;
+					 }
 					novoForm.appendChild(novoRadioInp);
-					if( i === 1){
-						listagem = true;
-					}			
+					if(listagem == true){
+						
+						
+						//--
+						novaDiv = document.createElement("div");
+						novaDiv.classList.add("setas");
+						novoSpanEsq = document.createElement("span");
+						novoSpanEsq.classList.add("seta_esquerda");
+						novoSpanDir = document.createElement("span");
+						novoSpanDir.classList.add("seta_direita");
+						novoAdir = document.createElement("a");
+						novoAesq = document.createElement("a");
+						novoAdir.innerText = ">";
+						novoAesq.innerText = "<";
+
+
+
+						novoSpanEsq.appendChild(novoAesq);
+						novoSpanDir.appendChild(novoAdir);
+
+						novaDiv.appendChild(novoSpanEsq);
+						novaDiv.appendChild(novoSpanDir);
+						
+						divControladores.appendChild(novoForm);					
+						divControladores.appendChild(novaDiv);
+						listagem = false;			
+					}// if listagem == true
 				}//loop for i
 				//divSlides.insertAdjacentHTML("beforeend", htmlSlides);
 
-				if(listagem == true){
-					
-					
-					//--
-					novaDiv = document.createElement("div");
-					novaDiv.classList.add("setas");
-					novoSpanEsq = document.createElement("span");
-					novoSpanEsq.classList.add("seta_esquerda");
-					novoSpanDir = document.createElement("span");
-					novoSpanDir.classList.add("seta_direita");
-					novoAdir = document.createElement("a");
-					novoAesq = document.createElement("a");
-					novoAdir.innerText = ">";
-					novoAesq.innerText = "<";
-
-
-
-					novoSpanEsq.appendChild(novoAesq);
-					novoSpanDir.appendChild(novoAdir);
-
-					novaDiv.appendChild(novoSpanEsq);
-					novaDiv.appendChild(novoSpanDir);
-					
-					divControladores.appendChild(novoForm);					
-					divControladores.appendChild(novaDiv);					
-					// htmlQuadrados += '</ul>';		
-					// divSlides.insertAdjacentHTML("beforeend", htmlQuadrados);
-					// divSlides.insertAdjacentHTML("beforeend", htmlSetas);
-				}// if listagem == true
+				
 			} // else slide true
 			else {
 				return;
@@ -286,4 +281,14 @@ function Banco(link, slide = false){
 		console.log(banco_de_dados);
 		return banco_de_dados;
 	}
+}
+function Menus(){
+	var menus = document.querySelectorAll("li > ul");
+	menus.addEventListener("mouseonhover", function(){
+		this.selectedIndex.classList.add("active");
+	});
+	menus.addEventListener("mouseover", function(){
+		this.selectedIndex.classList.remove("active");
+	});
+
 }

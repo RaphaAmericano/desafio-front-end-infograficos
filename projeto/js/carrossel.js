@@ -58,7 +58,7 @@ function setaImagem(){
 	//settings.legenda(elemento);
 	var intervalo = setInterval(settings.slide, 4000);
 
-	// document.querySelector(".seta_direita").addEventListener("click", settings.proximo, false);
-	// document.querySelector(".seta_esquerda").addEventListener("click", settings.anterior, false);
+	document.querySelector(".seta_direita").addEventListener("click", settings.proximo, false);
+	document.querySelector(".seta_esquerda").addEventListener("click", settings.anterior, false);
 }
 // window.addEventListener("load", setaImagem, false);
