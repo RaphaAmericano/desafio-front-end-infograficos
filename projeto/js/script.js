@@ -58,6 +58,7 @@ function app(){
 	selectBoxEditoria.addEventListener("change", function(){
 		value = this.options[this.selectedIndex].value;
 		util.resetarEditoriais();
+		if(value == 0 ){bancoDeMaterias.displayMaterias()};
 		bancoDeMaterias.displayEditorias(value);
 		// bancoPorData.organizarPorData();
 	});

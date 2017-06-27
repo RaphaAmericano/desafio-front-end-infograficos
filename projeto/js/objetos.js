@@ -56,7 +56,7 @@ function Banco(link, slide = false){
 					dat1 = banco_de_dados[0]['Editorias'][i]['Notícias'][j]["Data de publicação"];
 					dat2 = ArrDatas[k];
 
-					if(dat2 == dat1 ){
+					if(dat2 = dat1 ){
 						novaDiv = document.createElement("div");
 						novaDiv.classList.add("thumbnail");
 						novoSpan = document.createElement("span");
@@ -100,8 +100,8 @@ function Banco(link, slide = false){
 		}//loop k
 	};
 	//
-	this.displayAlfabetica = function(value = 1){
-		if(value == 3){
+	this.displayAlfabetica = function(value = 3){
+		if(value == 4){
 			this.reverterArray(ArrAlfabetica);
 		}
 
@@ -110,7 +110,7 @@ function Banco(link, slide = false){
 
 				str1 = banco_de_dados[0]['Editorias'][i]['Notícias'][j]["Título"];
 				str2 = ArrAlfabetica[j];
-				if(str1 == str2 ){
+				if(str1 = str2 ){
 					novaData = banco_de_dados[0]['Editorias'][i]['Notícias'][j]["Data de publicação"].split('-');
 					novaDiv = document.createElement("div");
 					novaDiv.classList.add("thumbnail");
@@ -149,9 +149,9 @@ function Banco(link, slide = false){
 					divEditoriais.appendChild(novaDiv);
 					//ArrAlfabetica.splice(i, 1);
 					
-				}	
-			}
-		}
+				}	// if
+			} //for j 
+		}// for i
 		//ArrAlfabetica.length = 0;
 		
 		//this.ordemAlfabetica();
@@ -267,9 +267,7 @@ function Banco(link, slide = false){
 						listagem = false;			
 					}// if listagem == true
 				}//loop for i
-				//divSlides.insertAdjacentHTML("beforeend", htmlSlides);
-
-				
+			
 			} // else slide true
 			else {
 				return;
@@ -281,8 +279,8 @@ function Banco(link, slide = false){
 			for(j = 0; j < banco_de_dados[0]['Editorias'][i]['Notícias'].length; j++){
 				a = banco_de_dados[0]['Editorias'][i]['Notícias'][j]["Título"];
 				ArrAlfabetica.push(a);			
-				}
 			}
+		}
 
 		ArrAlfabetica.sort(function(a, b){
 			var nomeA = a.toLowerCase();
