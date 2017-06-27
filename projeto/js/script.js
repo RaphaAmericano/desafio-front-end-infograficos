@@ -15,57 +15,49 @@ var itensMenu = document.querySelectorAll("ul.submenu");
 var bancoDeMaterias;
 var bancoDeSlides;
 var bancoPorData;
+var utilidades;
+//Menus
 
 function app(){
 	bancoDeMaterias = new Banco(linkJSONnoticias);
 	bancoDeSlides = new Banco(linkJSONslides, true);
 	bancoPorData = new Banco(linkJSONnoticias);	
+	util = new Utilidades();
 
 	bancoDeSlides.iniciarBanco();
 	bancoDeSlides.displayMaterias();
 	bancoDeMaterias.iniciarBanco();
 	bancoDeMaterias.displayMaterias();
+	
 	//Especial
 	bancoPorData.iniciarBanco();
 	bancoPorData.mudarFormatoData();
 	bancoPorData.montarArrayDatas();
 	setaImagem();
 
-	//Ordem
+
 	selectBoxOrdenar.addEventListener("change", function(){
 		value = this.options[this.selectedIndex].value;
 		//0 = data, 1 = recente, 2 = antiga, 3 = a z, 4 = z a
-		switch(value){
-			case 4:
-			bancoPorData.resetarEditoriais();
-			//função alfabetica
-			//
-			break;
-			case 3:
-			bancoPorData.resetarEditoriais();
-			//funçao algabetica
-			//
-			break;
-			case 2: 
-			bancoPorData.resetarEditoriais();		
-			bancoPorData.reverterArrayDatas();
-			bancoPorData.organizarPorData();
-			break;
-			case 1:
-			bancoPorData.resetarEditoriais();
-			bancoPorData.organizarPorData();
-			break;
-			case 0:
-			default:
-			bancoPorData.resetarEditoriais();
-			bancoDeSlides.displayMaterias();
-			return;
+		// util.resetarEditoriais();
+		if( value == 0 ){
+			util.resetarEditoriais();
+			bancoDeMaterias.displayMaterias();
 		}
-		// bancoPorData.organizarPorData();
+		if( value == 1  ||  value == 2){
+			util.resetarEditoriais();
+			bancoPorData.displayData(value);
+		} 
+		if( value == 3 || value == 4){
+			util.resetarEditoriais();
+			bancoDeMaterias.displayAlfabetica(value);
+		}
+		
 	});
 	//Editoria
 	selectBoxEditoria.addEventListener("change", function(){
 		value = this.options[this.selectedIndex].value;
+		util.resetarEditoriais();
 		bancoDeMaterias.displayEditorias(value);
 		// bancoPorData.organizarPorData();
 	});
