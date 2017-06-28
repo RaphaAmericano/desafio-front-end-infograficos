@@ -1,4 +1,4 @@
-#Instruções
+# Instruções
 
 *O dasafio precisa de um servidor para rodar. Utilizei o Wampserver com a configuração padrão.
 *Em seguida, é só rodar o arquivo [index.html](projeto/index.html) do diretório. 
