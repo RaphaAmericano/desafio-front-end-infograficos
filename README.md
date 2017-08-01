@@ -1,7 +1,7 @@
 # Instruções
 
-*O dasafio precisa de um servidor para rodar. Utilizei o Wampserver com a configuração padrão.
-*Em seguida, é só rodar o arquivo [index.html](projeto/index.html) do diretório. 
+* O dasafio precisa de um servidor para rodar. Utilizei o Wampserver com a configuração padrão.
+* Em seguida, é só rodar o arquivo [index.html](projeto/index.html) do diretório. 
 
 # Teste - Front-End
 O desafio é realizar o desenvolvimento front-end da homepage de um jornal fictício. O desenvolvimento deve seguir fielmente o layout disponibilizado nos arquivos abaixo (espaçamento, cores, tipografia e etc). Você não deve utilizar nenhum framework CSS (Bootstrap, Foundation e etc) neste desafio.
