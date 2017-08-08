@@ -1,0 +1,63 @@
+.slide_show #slidesDiv .slide_img {
+  width: 100%;
+  display: none;
+  transition: display ease-out 4s;
+  -moz-transition: display ease-out 4s;
+  -o-transition: display ease-out 4s;
+  -webkit-transition: display ease-out 4s; }
+  .slide_show #slidesDiv .slide_img.active {
+    display: inline;
+    transition: display ease-out 4s;
+    -moz-transition: display ease-out 4s;
+    -o-transition: display ease-out 4s;
+    -webkit-transition: display ease-out 4s; }
+.slide_show #controladores {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  margin: 12em 0 0 0; }
+  .slide_show #controladores .lista_quadrados {
+    position: absolute;
+    bottom: -120px;
+    left: 0;
+    margin: 40% 0 0 38%; }
+    .slide_show #controladores .lista_quadrados a.input_quadrado {
+      border: 4px solid #000;
+      color: #FFF;
+      cursor: pointer;
+      display: inline-block;
+      /*background-image: url("../img/slide_checkbox_bg.jpg");*/
+      background-position: top right;
+      background-repeat: no-repeat;
+      background-color: #FFF;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      margin: 0 15px; }
+      .slide_show #controladores .lista_quadrados a.input_quadrado :before {
+        padding-right: 8px;
+        content: '&#9633;'; }
+    .slide_show #controladores .lista_quadrados a.input_quadrado.active {
+      border: 4px solid #b22d30; }
+.slide_show .lista_quadrados {
+  list-style-type: none; }
+  .slide_show .lista_quadrados li {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #b22d30; }
+    .slide_show .lista_quadrados li a {
+      width: 20px;
+      height: 20px;
+      color: #FFF; }
+.slide_show .setas span {
+  cursor: pointer;
+  color: #FFF;
+  background: #b22d30;
+  font-size: 80px; }
+.slide_show .setas .seta_esquerda {
+  margin: 0 0 0 0.2em;
+  float: left; }
+.slide_show .setas .seta_direita {
+  margin: 0 0.2em 0 0;
+  float: right; }
