@@ -1,0 +1,59 @@
+@import '../variaveis';
+.contato {
+	.infos{
+		float: left;	
+		width: 50%;
+		box-sizing: border-box;
+		padding: 0 0 4em 5.9em;
+		p{
+			font-family: $verdana;
+			margin: 0;
+		}
+	}
+	.formulario{
+		float: right;
+		box-sizing: border-box;
+		width: 50%;
+		background-color: $vermelho_contato;
+		padding: 0 5.9em 4em 0;
+		form{
+			position: relative;
+			box-sizing: border-box;
+			width: 100%;
+			padding: 0 1.2em;
+			input[type=text], input[type=email]{
+				padding: 1em 1em ;
+			}
+			label:first-child{
+				font-family: $georgia;
+				font-size: 1.2em;
+			}
+			label, input, textarea{
+				box-sizing: border-box;
+				width: 100%;
+				border: none;
+				padding: 0 0 0 0;
+				margin: 0.4em 0;
+				display: block;
+				font-family: $verdana;	
+			}
+			textarea{
+				resize: none;
+				padding: 1em 1em ;
+			}
+			label{
+				color: $branco;
+			}
+			input[type=button]{
+				float: right;
+				width: initial;
+				cursor: pointer;
+				background: $preto;
+				color: $branco;
+				border: none;
+				font-weight: bold;
+				padding: 8px 10px;
+			}
+		}
+	}
+}

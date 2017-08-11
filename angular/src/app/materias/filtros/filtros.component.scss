@@ -1,0 +1,56 @@
+@import '../../_variaveis';
+.editoriais{
+	float: left;
+	border-bottom: 4px dashed $cinza_tracejado;
+	box-sizing: border-box;
+	padding: 2em 13em;
+	select{
+		appearance: none;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		border: none;
+		color: $branco;
+		font-weight: bold;
+		background-color: $preto;
+		padding: 0.8em 0.2em 0.8em 0.2em;
+		text-indent: 0.01px;
+		text-overflow: ""; 
+		text-transform: uppercase;
+		//background-image: url('../img/seta_select_box.png');
+		background-position: 95px 15px;
+		background-repeat: no-repeat;
+		min-width: 8.4em;
+		option{
+			border: none;
+		}
+	}
+	h2 {
+		float: left;
+		margin: 0 0;
+		width: 100%;
+
+	}
+	.comboboxes{
+		float: right;
+	}
+	&.acessadas{
+		border-top: 2px dashed $cinza_tracejado;
+		border-bottom: 2px dashed $cinza_tracejado;
+	}
+	.grafico{
+		float: left;
+		width: 50%;
+		margin-top: 15%;
+		box-sizing: border-box;
+		padding: 0 5.9em 4em 0;
+	}
+	.conteudo {
+		float: right;
+		width: 50%;
+		box-sizing: border-box;
+		padding: 0 0 4em 5.9em;
+		h3{
+			margin: 0 0 0 18.72px;
+		}
+	}
+}

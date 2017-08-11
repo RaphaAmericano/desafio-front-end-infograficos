@@ -1,0 +1,39 @@
+@import '../variaveis';
+#editoriais{
+ 	float: left;
+ 	.thumbnail{
+ 		box-sizing: border-box;
+ 		float: left;
+ 		margin: 55px 0 0 0;
+ 		width: 33.1%; //242px
+ 		min-height: 38em;
+ 		border-left: 4px solid $vermelho;
+ 		padding: 8px 45px 0 20px; 
+ 		h5{
+ 			font-family: $verdana;
+ 			margin: 0;
+ 			float: right;
+ 		}
+ 		p{
+ 			text-align: justify;
+ 		}
+ 		img {
+ 			margin-top: 1em;
+ 			width: 100%;
+ 		}
+ 		span.saiba_mais{
+ 			a{
+ 				color: $preto;
+ 				text-decoration: none;
+ 				font-weight: bold;
+ 			}
+ 		}
+ 		span.data_publicacao{
+ 			float: left;
+ 		}
+ 	}
+ }
+.mapa{
+	height: 400px;
+	width: 100%;
+}

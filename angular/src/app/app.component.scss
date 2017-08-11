@@ -1,0 +1,45 @@
+// //Variaveis
+// // Fontes
+// $verdana: Verdana, Geneva, sans-serif; 
+// $georgia: Georgia, serif;
+// //Cores
+// $preto: #000;
+// $branco: #FFF;
+// $vermelho: #b22d30;
+// $vermelho_contato: #b22d31;
+// $cinza: #2c3339;
+// $cinza_texto: #666666;
+// $cinza_tracejado: #9b9da3;
+
+// //Medidas
+// $lateral: 13em;//207px;
+// $width_thumb: 277px;
+@import 'variaveis';
+body {
+  width: 100%;
+  min-height: 100%;
+  position: relative; 
+  margin: 0;  
+  background-color: $branco; 
+  font-family: $georgia;
+ }
+ .container{
+  position: absolute;
+  margin: 0 0;
+  top: 0; 
+  left: 0;
+   > header,  > section.contato, > footer {
+    box-sizing: border-box;
+    padding: 0 $lateral;
+  }
+  > section {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin: 4em 0;
+  }
+  h2 { 
+    font-size: 2.2em;
+  }
+  // }   
+ }

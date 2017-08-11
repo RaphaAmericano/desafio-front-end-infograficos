@@ -1,0 +1,64 @@
+@import '../variaveis';
+header.main_header{
+  margin: 1em 0 0 0;
+  font-family: $georgia;
+  border-bottom: 4px solid $vermelho;
+  width: 100%;
+  float: left;
+  .logo{
+    width: 200px;
+    float: left;
+    img{ 
+      height: 80px;
+    }
+  } 
+  .menu_principal{
+    float: right;
+    list-style-type: none;
+    margin: 1em 0.4em 1em 0.4em;
+    > li{
+      display: inline-block;
+      margin: 0 0.4em;
+      &:first-child{
+        color: $vermelho;
+      }
+    }
+    li{
+      list-style-type: none;
+      margin: 0.2em 0.4em;
+      .sub_menu{
+        display: none;
+        padding: 0 0 0 1em;
+        border-bottom: 4px solid $vermelho;
+        > li{
+          margin: 0.5em 4em 0.5em 1em;
+          a:hover{
+            font-weight: bold;
+          }
+        }
+      } 
+      &:hover, &:active, &:focus{
+        list-style-type: none;
+        > .sub_menu{
+          list-style-type: none;
+          background: $branco;
+          display: list-item;
+          position: absolute;;
+          top: 55px;
+          right: 300px;
+          z-index: 200;
+        }
+      }
+      a{
+        color: inherit;
+        text-decoration: none;
+        &.atual{
+          color: $vermelho;
+        }
+        &:visited{
+          color: inherit;
+        } 
+      }
+    }
+  }
+ }

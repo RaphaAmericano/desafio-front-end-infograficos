@@ -1,0 +1,18 @@
+<section class="editoriais">
+	<header>
+		<h2>Editorias</h2>
+	<app-filtros></app-filtros>
+	</header>
+    <div id="editoriais">
+       <!--  <app-materia *ngFor="let materia of materias" [materia]="materia"></app-materia> -->
+		<div class="thumbnail" *ngFor="let materia of materias">
+			<span class="data_publicacao"><b>{{ materia.data }}</b></span>
+			<h5>{{ materia.h5 }}</h5>
+			<img src="{{ materia.img }}" alt="" class="thumb_img">
+			<h4>{{ materia.h4 }}</h4>
+			<p class="thumb_paragrafo">{{ materia.p }}</p>
+			<span class="saiba_mais"><a href="">Saiba Mais</a></span>
+		</div>
+		<!-- Refatorar para outro módulo -->
+    </div>
+</section>

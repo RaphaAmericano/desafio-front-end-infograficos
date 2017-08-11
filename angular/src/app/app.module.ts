@@ -14,6 +14,7 @@ import { GoogleMapsContainerModule } from './google-maps-container/google-maps-c
 import { HeaderModule } from './header/header.module';
 import { InfosAdicionaisModule } from './infos-adicionais/infos-adicionais.module';
 import { SliderModule } from './slider/slider.module';
+import { MateriasModule } from './materias/materias.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SliderModule } from './slider/slider.module';
     GoogleMapsContainerModule,
     HeaderModule,
     InfosAdicionaisModule,
-    SliderModule
+    SliderModule,
+    MateriasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

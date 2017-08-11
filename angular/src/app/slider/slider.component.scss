@@ -1,0 +1,85 @@
+@import '../variaveis';
+.slide_show{
+  #slidesDiv{
+    .slide_img{
+      width: 100%; 
+      display: none;
+      transition: display ease-out 4s;
+      -moz-transition: display ease-out 4s;
+      -o-transition: display ease-out 4s;
+      -webkit-transition: display ease-out 4s;
+      &.active{
+        display:  inline;
+        transition: display ease-out 4s;
+        -moz-transition: display ease-out 4s;
+        -o-transition: display ease-out 4s;
+        -webkit-transition: display ease-out 4s;
+      } 
+    }
+  }
+  #controladores{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    margin: 12em 0 0 0;
+    .lista_quadrados {
+      position: absolute;
+      bottom: -120px;
+      left: 0;
+      margin: 40% 0 0 38%;
+      
+      a.input_quadrado{
+        border: 4px solid $preto;
+        color: $branco;
+        cursor: pointer;
+        display: inline-block;
+        //background-image: url('../img/slide_checkbox_bg.jpg');
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-color: $branco;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        margin: 0 15px;
+        :before{
+          padding-right: 8px;
+          content: '&#9633;'; 
+        }
+      }
+      a.input_quadrado.active{
+        border: 4px solid $vermelho;
+      }
+    }
+  }
+  .lista_quadrados {
+    list-style-type: none; 
+    li{ 
+      display: inline-block;
+      width: 20px;
+      height: 20px;   
+      border: 2px solid $vermelho;
+       
+      a{
+        width: 20px;
+        height: 20px;    
+        color: $branco; 
+      }
+    }     
+  }
+  .setas {
+    span{
+      cursor: pointer; 
+      color: $branco; 
+      background: $vermelho;
+      font-size: 80px;  
+    }
+    .seta_esquerda{
+      margin:0 0 0 0.2em;
+      float: left;
+    }
+    .seta_direita{
+      margin: 0 0.2em 0 0; 
+      float: right;
+    }
+  }
+}

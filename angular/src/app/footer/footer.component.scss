@@ -1,0 +1,16 @@
+@import '../variaveis';
+footer{
+  position: relative;
+  width: 100%;
+  float: left;
+  font-family: $verdana;
+  font-weight: 500;  
+  color: $branco; 
+  background-color: $preto;
+  width: 100%; 
+  bottom: 0;
+  left: 0;
+  h6{
+    margin: 3.4em 0 ;
+  }
+}
